@@ -1,0 +1,47 @@
+.top-doctors-container {
+    text-align: center;
+    margin: 40px auto;
+    width:60%;
+  }
+  
+  .top-doctors-description {
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .top-doctors-grid{
+    margin-top: 10px;
+  }
+  .doctor-card {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .doctor-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .doctor-image {
+    width: 100%;
+    background-color: #E6F7FF;
+  }
+  
+  .doctor-availability {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #52c41a;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .more-button {
+    margin-top: 20px;
+  }
+  

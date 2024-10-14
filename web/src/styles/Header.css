@@ -1,0 +1,64 @@
+.header-container {
+    background-color: #20A0D8;
+    border-radius: 8px;
+    padding: 20px 40px;
+    text-align: center;
+    margin: 0px auto;
+    /* width:60%; */
+  }
+  
+  .text-container {
+    text-align: center;
+    padding: 5vw 0;
+  }
+  
+  .header-title {
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .doctor-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 10px
+  }
+  
+  .doctor-image {
+    width: auto;
+    height: 50px;
+  }
+  
+  .doctor-text {
+    color: white;
+  }
+  
+  .book-button {
+    background-color: white;
+    color: #323941;
+    border-color: white;
+    padding: 10px 30px;
+  }
+  
+  .book-button:hover {
+    transform: scale(1.05);
+    transition: all 0.3s;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
