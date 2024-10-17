@@ -17,11 +17,14 @@ const { Header, Content, Footer } = Layout;
 
 const App = () => {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Header style={{ background: "none" }}>
+    <>
+    <div style={{ minHeight: "100vh" }}>
+     {/* <Layout style={{ minHeight: "100vh" }}> */}
+      {/* <Header style={{ background: "none" }}> */}
         <Navbar />
-      </Header>
-      <Content style={{ padding: "0 50px", flex: 1 }}>
+      {/* </Header> */}
+       {/* <Content style={{ padding: "0 50px", flex: 1 }}> */}
+       <div style={{ minHeight: "78vh" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/doctors" element={<Doctors />} />
@@ -31,15 +34,18 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/my-profile" element={<MyProfile />} />
-          <Route path="/appointment" element={<MyAppointments />} />
+          <Route path="/appointments" element={<MyAppointments />} />
           <Route path="/appointment/:docId" element={<Appointment />} />
         </Routes>
-      </Content>
+        </div>
+       {/* </Content> */}
 
-      <Footer >
+       {/* <Footer > */}
         <AppFooter />
-      </Footer>
-    </Layout>
+      {/* </Footer> */}
+     {/* </Layout> */}
+     </div>
+    </>
   );
 };
 

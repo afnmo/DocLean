@@ -14,13 +14,15 @@ const Appointment = () => {
   const [slotTime, setSlotTime] = useState("");
   const [loading, setLoading] = useState(true);
   const [patientId, setPatientId] = useState(null);
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   const [appointment, setAppointment] = useState({
     doctorId: docId,
     patientId: null,
     slotDate: "",
     slotTime: "",
   });
+
+
 
   const checkAuth = useCallback(async () => {
     try {
@@ -49,7 +51,10 @@ const Appointment = () => {
     const formattedSlots = slots.map((slot) => ({
       date: slot.date,
       day: slot.day.toUpperCase(),
-      times: slot.times,
+      times: slot.times.map((time) => ({
+        time: time.time,
+        status: time.status,
+      })),
     }));
     setDocSlots(formattedSlots);
   };
@@ -75,7 +80,7 @@ const Appointment = () => {
       message.error("Please select a time slot");
       return;
     }
-
+  
     const selectedDate = docSlots[slotIndex]?.date;
     const newAppointment = {
       doctorId: docId,
@@ -83,18 +88,30 @@ const Appointment = () => {
       slotDate: selectedDate,
       slotTime,
     };
-
+  
     try {
-      const { data: res } = await axios.post("http://localhost:5000/api/appointments", newAppointment);
-      navigate("/");
+      const existingAppointment = await axios.get(`http://localhost:5000/api/appointments?doctorId=${docId}&slotDate=${selectedDate}&slotTime=${slotTime}`);
+      
+      if (existingAppointment.data.length > 0) {
+        console.log(JSON.stringify(existingAppointment.data, null, 2));
+        return message.error("The selected time slot is already booked.");
+      }
+
+      
+      const { data: res } = await axios.post("http://localhost:5000/api/appointments", { ...newAppointment, status: 'booked' });
+      
+      navigate("/appointments"); 
       message.success(res.message);
     } catch (error) {
       if (error.response?.status >= 400 && error.response?.status <= 500) {
         console.error("Error booking appointment:", error);
         message.error(error.response.data.message);
+      } else {
+        message.error("An unexpected error occurred while booking the appointment");
       }
     }
   };
+  
 
   if (loading) return <div>Loading...</div>;
 
@@ -140,14 +157,15 @@ const Appointment = () => {
               {/* Time Slots */}
               <div className="slot-time-buttons">
                 {docSlots[slotIndex]?.times.length ? (
-                  docSlots[slotIndex].times.map((time, index) => (
+                  docSlots[slotIndex].times.map((timeSlot, index) => (
                     <Button
                       key={index}
-                      type={time === slotTime ? "primary" : "default"}
-                      onClick={() => setSlotTime(time)}
+                      type={timeSlot.status === 'available' && timeSlot.time === slotTime ? "primary" : "default"}
+                      onClick={() => timeSlot.status === 'available' && setSlotTime(timeSlot.time)}
                       className="slot-time-button"
+                      disabled={timeSlot.status !== 'available'}
                     >
-                      {time.toLowerCase()}
+                      {timeSlot.time.toLowerCase()}
                     </Button>
                   ))
                 ) : (

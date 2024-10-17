@@ -1,0 +1,88 @@
+.appointments-container {
+    padding: 24px;
+  }
+  
+  .appointments-title {
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #595959;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 22px;
+  }
+  
+  .appointment-card {
+    margin-bottom: 16px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appointment-image-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100%;            
+  }
+  
+  .appointment-image {
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+    border-radius: 50%; 
+    background-color: #e6f7ff;
+  }
+  
+  .appointment-details {
+    padding-bottom: 12px;
+  }
+  
+  .appointment-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: baseline; 
+    margin-bottom: 8px; 
+  }
+  
+  .doctor-name {
+    margin: 0; 
+  }
+  
+  .appointment-icons {
+    display: flex;
+    align-items: baseline; 
+  }
+  
+  .icon-button {
+    font-size: 20px; 
+    margin-left: 12px; 
+    cursor: pointer; 
+    transition: color 0.3s; 
+  }
+  
+  
+  .icon-button:hover {
+    color: #4BA8D8; 
+  }
+  
+  
+  .icon-button:nth-child(1) { 
+    color: #2CBF8A;
+  }
+  
+  .icon-button:nth-child(2) { 
+    color: #FF4D4F; 
+  }
+  
+  .appointment-info p {
+    margin-bottom: 4px;
+  }
+  
+  .action-button {
+    margin-top: 8px;
+    width: 150px;
+  }
+  
+  .action-button:first-child {
+    margin-right: 12px;
+  }
+  

@@ -141,7 +141,9 @@ const Navbar = () => {
                     }
                   >
                     <Menu.Item key="profile">My Profile</Menu.Item>
-                    <Menu.Item key="appointments">My Appointments</Menu.Item>
+                    <Menu.Item key="appointments">
+                    <NavLink to="/appointments">My Appointments</NavLink>
+                    </Menu.Item>
                     <Menu.Item key="logout" onClick={handleLogout}>
                       Logout
                     </Menu.Item>

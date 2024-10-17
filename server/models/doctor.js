@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const doctorSchema = new mongoose.Schema({
   _id: String,
@@ -13,13 +13,20 @@ const doctorSchema = new mongoose.Schema({
     line1: String,
     line2: String,
   },
-  slots: [{
-    date: String,
-    day: String,
-    times: [String],
-  }],
+  slots: [
+    {
+      date: String,
+      day: String,
+      times: [
+        {
+          time: String,
+          status: String,
+        },
+      ],
+    },
+  ],
 });
 
-const Doctor = mongoose.model('doctor', doctorSchema);
+const Doctor = mongoose.model("doctor", doctorSchema);
 
 module.exports = Doctor;

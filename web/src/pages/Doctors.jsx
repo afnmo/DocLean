@@ -72,6 +72,7 @@ const Doctors = () => {
                       src={item.image}
                     />
                   }
+                  onClick={()=>navigate(`/appointment/${item._id}`)}
                 >
                   <Card.Meta title={item.name} description={item.speciality} />
                   <Text type="success" className="availability-status">

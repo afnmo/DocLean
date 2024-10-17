@@ -1,27 +1,28 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const connection = require('./db')
-const userRoutes = require('./routes/users')
-const authRoutes = require('./routes/auth')
-const doctorRoutes = require('./routes/doctors');
-const appointmentRoutes = require('./routes/appointments')
-const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
+const connection = require('./db');
+const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
+const doctorRoutes = require('./routes/doctors');
+const appointmentRoutes = require('./routes/appointments');
+const cookieParser = require('cookie-parser');
 
-const port = process.env.PORT || 5000; 
-
+const port = process.env.PORT || 5000;
 
 // database connection
-connection()
+connection();
 
 // middlewares
 app.use(express.json());
-app.use(cors({
-    origin: "http://localhost:3000", 
-    credentials: true 
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 // routes
@@ -30,8 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/appointments', appointmentRoutes);
 
-
-
+  
 // endpoints
 app.get('/api/data', (req, res) => { 
   res.json({ message: 'Hello from Express!' });
